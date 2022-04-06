@@ -1,0 +1,28 @@
+{
+  "name": "task-manager-api",
+  "version": "1.0.0",
+  "description": "Task manager API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "devStart": "nodemon index.js",
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcioAntonioRodrigues/task-manager-API.git"
+  },
+  "author": "Marcio Souza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarcioAntonioRodrigues/task-manager-API/issues"
+  },
+  "homepage": "https://github.com/MarcioAntonioRodrigues/task-manager-API#readme",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3",
+    "mssql": "^8.0.2",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.15"
+  }
+}
