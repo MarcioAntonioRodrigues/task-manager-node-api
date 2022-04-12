@@ -1,11 +1,15 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
+
 
 const TaskService = require('./Services/TaskService')
 const taskService = new TaskService();
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
+
+app.use(cors());
 
 app.get('/getalltasks', async (_req, res) =>
 {
@@ -19,11 +23,13 @@ app.get('/getalltasks', async (_req, res) =>
     }
 })
 
-app.post('/create', async (req, res)=> {
-    let request = req.body;
+app.post('/create', (req, res)=> {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        let request = req.body;
     try
     {
-        await taskService.create(request);
+        taskService.create(request);
         res.status(200).send('Dados gravados com sucesso!!!')
     }
     catch(err)

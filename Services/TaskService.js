@@ -15,7 +15,14 @@ class TaskService
     {
         const task = new Task(request.name, request.timeCourse, request.priority, request.status);
         task.validate();
-        await taskDao.create(task);
+        try
+        {
+            await taskDao.create(task);
+        }
+        catch(e)
+        {
+            console.log('erro:', e)
+        }
     }
 }
 
