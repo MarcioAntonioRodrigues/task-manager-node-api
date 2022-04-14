@@ -11,6 +11,12 @@ class TaskService
         return result.recordset;
     }
 
+    async getByTimeCourse(timeCourse)
+    {
+        const result = await taskDao.getByTimeCourse(timeCourse)
+        return result.recordset;
+    }
+
     async create(request)
     {
         const task = new Task(request.name, request.timeCourse, request.priority, request.status);

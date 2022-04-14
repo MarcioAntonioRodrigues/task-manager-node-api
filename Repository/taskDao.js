@@ -5,13 +5,19 @@ class TaskDao
 {   
     async getAll()
     {
-        let pool = await sql.connect(config);
-        return pool.request().query("SELECT * FROM task")
+        const pool = await sql.connect(config);
+        return pool.request().query("SELECT * FROM task");
+    }
+
+    async getByTimeCourse(timeCourse)
+    {
+        const pool = await sql.connect(config);
+        return pool.request().query(`SELECT * FROM task WHERE timeCourse ='${timeCourse}'`);
     }
 
     async create(task)
     {
-        let pool = await sql.connect(config);
+        const pool = await sql.connect(config);
         const query = `insert into task VALUES ('${task.name}', '${task.timeCourse}', '${task.priority}', '${task.status}')`;
         await pool.request().query(query);
     }

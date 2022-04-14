@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 
-
 const TaskService = require('./Services/TaskService')
 const taskService = new TaskService();
 
@@ -19,7 +18,18 @@ app.get('/getalltasks', async (_req, res) =>
     }
     catch(err)
     {
-        res.send(err);
+        res.status(400).send(err)
+    }
+})
+
+app.get('/getbytimecourse/:timecourse', async (req, res) => {
+    try
+    {
+        res.send(await taskService.getByTimeCourse(req.params.timecourse));
+    }
+    catch(err)
+    {
+        res.status(400).send(err)
     }
 })
 
