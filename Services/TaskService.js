@@ -7,7 +7,7 @@ class TaskService
 {
     async getAll()
     {
-        let result = await taskDao.getAll();
+        const result = await taskDao.getAll();
         return result.recordset;
     }
 
@@ -24,6 +24,18 @@ class TaskService
         try
         {
             await taskDao.create(task);
+        }
+        catch(e)
+        {
+            console.log('erro:', e)
+        }
+    }
+
+    async delete(taskId)
+    {
+        try
+        {
+            await taskDao.delete(taskId);
         }
         catch(e)
         {

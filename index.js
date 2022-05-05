@@ -34,19 +34,30 @@ app.get('/getbytimecourse/:timecourse', async (req, res) => {
 })
 
 app.post('/create', (req, res)=> {
-        res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-        let request = req.body;
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    let request = req.body;
     try
     {
         taskService.create(request);
-        res.status(200).send('Dados gravados com sucesso!!!')
+        res.status(200).send('Dados gravados com sucesso!!!');
     }
     catch(err)
     {
-        res.status(400).send(`Erro ao salvar os dados no banco: ${err}`)
+        res.status(400).send(`Erro ao salvar os dados no banco: ${err}`);
     }
-    
+});
+
+app.delete('/delete/:id', (req, res)=> {
+    try
+    {
+        taskService.delete(req.params.id);
+        res.status(200).send('Dados apagados com sucesso!!!');
+    }
+    catch(err)
+    {
+        res.status(400).send(`Erro ao apagar os dados no banco: ${err}`);
+    }
 });
 
 app.listen(3001, ()=> {
