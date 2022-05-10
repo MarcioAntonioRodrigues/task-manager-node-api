@@ -11,15 +11,15 @@ class TaskService
         return result.recordset;
     }
 
-    async getByTimeCourse(timeCourse)
+    async getByStatus(status)
     {
-        const result = await taskDao.getByTimeCourse(timeCourse)
+        const result = await taskDao.getByStatus(status)
         return result.recordset;
     }
 
     async create(request)
     {
-        const task = new Task(request.name, request.timeCourse, request.priority, request.status, request.deliveryDate, request.description);
+        const task = new Task(request.name, request.priority, request.status, request.deliveryDate, request.description);
         task.validate();
         try
         {

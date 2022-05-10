@@ -9,16 +9,16 @@ class TaskDao
         return pool.request().query("SELECT * FROM task");
     }
 
-    async getByTimeCourse(timeCourse)
+    async getByStatus(status)
     {
         const pool = await sql.connect(config);
-        return pool.request().query(`SELECT * FROM task WHERE timeCourse ='${timeCourse}'`);
+        return pool.request().query(`SELECT * FROM task WHERE status ='${status}'`);
     }
 
     async create(task)
     {
         const pool = await sql.connect(config);
-        const query = `insert into task VALUES ('${task.name}', '${task.timeCourse}', '${task.priority}', '${task.status}', '${task.description}', '${task.deliveryDate}')`;
+        const query = `insert into task VALUES ('${task.name}', '${task.priority}', '${task.status}', '${task.description}', '${task.deliveryDate}')`;
         await pool.request().query(query);
     }
     

@@ -22,10 +22,10 @@ app.get('/getalltasks', async (_req, res) =>
     }
 })
 
-app.get('/getbytimecourse/:timecourse', async (req, res) => {
+app.get('/getbystatus/:status', async (req, res) => {
     try
     {
-        res.send(await taskService.getByTimeCourse(req.params.timecourse));
+        res.send(await taskService.getByStatus(req.params.status));
     }
     catch(err)
     {
