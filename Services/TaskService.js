@@ -19,7 +19,7 @@ class TaskService
 
     async create(request)
     {
-        const task = new Task(request.name, request.timeCourse, request.priority, request.status);
+        const task = new Task(request.name, request.timeCourse, request.priority, request.status, request.deliveryDate, request.description);
         task.validate();
         try
         {
