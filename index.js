@@ -60,6 +60,21 @@ app.delete('/delete/:id', (req, res)=> {
     }
 });
 
+app.put('/updateDescription', (req, res) =>
+{
+    const taskId = req.body.taskId;
+    const description = req.body.description;
+    try
+    {
+        taskService.updateDescription(taskId, description);
+        res.status(200).send('Dados alterados com sucesso!!!');
+    }
+    catch(err)
+    {
+        res.status(400).send(`Erro ao salvar os dados no banco: ${err}`);
+    }
+})
+
 app.listen(3001, ()=> {
     console.log('running on port 3001...');
 });

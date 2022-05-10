@@ -28,6 +28,13 @@ class TaskDao
         const query = `DELETE FROM task WHERE taskId = '${taskId}'`
         await pool.request().query(query);
     }
+
+    async updateDescription(taskId, description)
+    {
+        const pool = await sql.connect(config);
+        const query = `UPDATE task SET description = '${description}' WHERE taskId = '${taskId}'`;
+        await pool.request().query(query);
+    }
 }
 
 module.exports = TaskDao;
