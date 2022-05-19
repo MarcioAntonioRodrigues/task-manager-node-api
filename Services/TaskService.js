@@ -54,6 +54,18 @@ class TaskService
             console.log('erro:', e)
         }
     }
+    
+    async updatePriority(taskId, priority)
+    {
+        try
+        {
+            await taskDao.updatePriority(taskId, priority);
+        }
+        catch(e)
+        {
+            console.log('erro:', e)
+        }
+    }
 }
 
 module.exports = TaskService;
