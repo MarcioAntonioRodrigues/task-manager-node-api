@@ -35,6 +35,13 @@ class TaskDao
         const query = `UPDATE task SET description = '${description}' WHERE taskId = '${taskId}'`;
         await pool.request().query(query);
     }
+
+    async updatePriority(taskId, priority)
+    {
+        const pool = await sql.connect(config);
+        const query = `UPDATE task SET priority = '${priority}' WHERE taskId = '${taskId}'`;
+        await pool.request().query(query);
+    }
 }
 
 module.exports = TaskDao;
