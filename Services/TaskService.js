@@ -66,6 +66,18 @@ class TaskService
             console.log('erro:', e)
         }
     }
+    
+    async updateStatus(taskId, status)
+    {
+        try
+        {
+            await taskDao.updateStatus(taskId, status);
+        }
+        catch(e)
+        {
+            console.log('erro:', e)
+        }
+    }
 }
 
 module.exports = TaskService;
